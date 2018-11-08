@@ -26,12 +26,12 @@ function match(int $firstTeamId, int $secondTeamId): array
     $predictedScoresFirstTeam = $teamsPower['first_team']['attack_power'] * $teamsPower['second_team']['defence_power'] * $averageGoals['scored'];
     $predictedScoresSecondTeam = $teamsPower['second_team']['attack_power'] * $teamsPower['first_team']['defence_power'] * $averageGoals['scored'];
     for ($goals = 0; $goals < 10; $goals++) {
-        $poisonFirstTeam = round(poissonDistribution($goals, $predictedScoresFirstTeam) * 100);
-        $poisonSecondTeam = round(poissonDistribution($goals, $predictedScoresSecondTeam) * 100);
-        for ($probability = 0; $probability < $poisonFirstTeam; $probability++) {
+        $poissonFirstTeam = round(poissonDistribution($goals, $predictedScoresFirstTeam) * 100);
+        $poissonSecondTeam = round(poissonDistribution($goals, $predictedScoresSecondTeam) * 100);
+        for ($probability = 0; $probability < $poissonFirstTeam; $probability++) {
             $probableGoalsFirstTeam[] = $goals;
         }
-        for ($probability = 0; $probability < $poisonSecondTeam; $probability++) {
+        for ($probability = 0; $probability < $poissonSecondTeam; $probability++) {
             $probableGoalsSecondTeam[] = $goals;
         }
     }
